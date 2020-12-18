@@ -33,30 +33,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
-
+        // assigning the buttons to variables
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
         prevButton = findViewById(R.id.pre_button)
         questionTextView = findViewById(R.id.question_text_view)
 
+        //true button is selected
         trueButton.setOnClickListener{View ->
          checkAnswer(true)
 
 
         }
-
+        //false button is selected
         falseButton.setOnClickListener{View ->
             checkAnswer(false)
 
         }
-
+        //nextButton is selected
         nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1)% questionBank.size
             updateQuestion()
         }
+        //on create first question is shown
         updateQuestion()
-
+        //pre button is selected
         prevButton.setOnClickListener {
             if (currentIndex != 0) {
                 currentIndex = (currentIndex - 1) % questionBank.size
@@ -92,11 +94,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+    //updates the question 
     private fun updateQuestion() {
         val questionTextResId = questionBank[currentIndex].textResId
         questionTextView.setText(questionTextResId)
     }
+
     private fun checkAnswer(userAnswer:Boolean){
         val correctAnswer = questionBank[currentIndex].answer
 
