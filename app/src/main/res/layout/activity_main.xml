@@ -42,7 +42,7 @@
             android:text="@string/pre_button"
             android:drawableStart="@drawable/arrow_left"
             />
-    <Button
+        <Button
         android:id="@+id/next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
