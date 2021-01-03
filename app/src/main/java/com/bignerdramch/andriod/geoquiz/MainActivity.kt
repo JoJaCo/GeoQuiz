@@ -56,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1)% questionBank.size
             updateQuestion()
+            trueButton.isEnabled = true
+            falseButton.isEnabled = true
+
         }
         //on create first question is shown
         updateQuestion()
@@ -106,9 +109,12 @@ class MainActivity : AppCompatActivity() {
 
         val messageResId = if(userAnswer == correctAnswer){
             R.string.correct_toast
+
         }else{
             R.string.incorrect_toast
         }
         Toast.makeText(this, messageResId,Toast.LENGTH_SHORT).show()
+        trueButton.isEnabled = false
+        falseButton.isEnabled = false
     }
 }
