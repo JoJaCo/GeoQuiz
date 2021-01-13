@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nextButton: Button
     private lateinit var prevButton: Button
     private lateinit var questionTextView: TextView
+    private lateinit var correct: TextView
     private var currentIndex = 0
     private var userCorrect = 0
 
@@ -62,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         }
         //on create first question is shown
         updateQuestion()
+
         //pre button is selected
         prevButton.setOnClickListener {
             if (currentIndex != 0) {
@@ -120,15 +122,19 @@ class MainActivity : AppCompatActivity() {
         }
         Toast.makeText(this, messageResId,Toast.LENGTH_SHORT).show()
         disable()
-        score(userAnswer)
+       
     }
 
     private fun score(userAnswer: Boolean) {
         val correctAnswer = questionBank[currentIndex].answer
         if (userAnswer == correctAnswer){
             userCorrect +1
-            
+
+        }else{
+              null
         }
+        val percent = (userCorrect/questionBank.size) * 100
+        correct.setText(percent)
 
 
 
