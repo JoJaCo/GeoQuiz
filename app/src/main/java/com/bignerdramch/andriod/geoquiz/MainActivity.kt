@@ -21,12 +21,12 @@ class MainActivity : AppCompatActivity() {
     private var userCorrect = 0
 
     private val questionBank = listOf(
-        Question(R.string.question_australia,true),
-        Question(R.string.question_oceans,true),
-        Question(R.string.question_mideast,false),
-        Question(R.string.question_africa,false),
-        Question(R.string.question_americas,true),
-        Question(R.string.question_asia,true)
+        Question(R.string.question_australia,true,false),
+        Question(R.string.question_oceans,true,false),
+        Question(R.string.question_mideast,false,false),
+        Question(R.string.question_africa,false,false),
+        Question(R.string.question_americas,true,false),
+        Question(R.string.question_asia,true,false)
     )
 
 
@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         }
         Toast.makeText(this, messageResId,Toast.LENGTH_SHORT).show()
         disable()
-       
+
     }
 
     private fun score(userAnswer: Boolean) {
@@ -135,6 +135,7 @@ class MainActivity : AppCompatActivity() {
         }
         val percent = (userCorrect/questionBank.size) * 100
         correct.setText(percent)
+
 
 
 
