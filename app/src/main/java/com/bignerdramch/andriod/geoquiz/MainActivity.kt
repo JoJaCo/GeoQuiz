@@ -18,15 +18,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var questionTextView: TextView
     private lateinit var correct: TextView
     private var currentIndex = 0
-    private var userCorrect = 0
+   
 
     private val questionBank = listOf(
-        Question(R.string.question_australia,true,false),
-        Question(R.string.question_oceans,true,false),
-        Question(R.string.question_mideast,false,false),
-        Question(R.string.question_africa,false,false),
-        Question(R.string.question_americas,true,false),
-        Question(R.string.question_asia,true,false)
+        Question(R.string.question_australia,true),
+        Question(R.string.question_oceans,true),
+        Question(R.string.question_mideast,false),
+        Question(R.string.question_africa,false),
+        Question(R.string.question_americas,true),
+        Question(R.string.question_asia,true)
     )
 
 
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1)% questionBank.size
             updateQuestion()
-            enable()
+
 
         }
         //on create first question is shown
@@ -76,10 +76,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun enable() {
-        trueButton.isEnabled = true
-        falseButton.isEnabled = true
-    }
 
     override fun onStart() {
         super.onStart()
@@ -121,29 +117,11 @@ class MainActivity : AppCompatActivity() {
             R.string.incorrect_toast
         }
         Toast.makeText(this, messageResId,Toast.LENGTH_SHORT).show()
-        disable()
-
-    }
-
-    private fun score(userAnswer: Boolean) {
-        val correctAnswer = questionBank[currentIndex].answer
-        if (userAnswer == correctAnswer){
-            userCorrect +1
-
-        }else{
-              null
-        }
-        val percent = (userCorrect/questionBank.size) * 100
-        correct.setText(percent)
-
-
-
 
     }
 
 
-    private fun disable() {
-        trueButton.isEnabled = false
-        falseButton.isEnabled = false
-    }
+
+
+
 }
