@@ -8,6 +8,10 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+
+
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var questionTextView: TextView
     private lateinit var correct: TextView
     private var currentIndex = 0
-   
+
 
     private val questionBank = listOf(
         Question(R.string.question_australia,true),
@@ -35,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
+        val provider: ViewModelProvider = ViewModelProviders.of(this)
+        val quizViewModel = provider.get(QuizViewModel::class.java)
+        Log.d(TAG, "Got a QuizViewModel: $quizViewModel")
 
         // assigning the buttons to variables
         trueButton = findViewById(R.id.true_button)
@@ -125,3 +132,5 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
+
