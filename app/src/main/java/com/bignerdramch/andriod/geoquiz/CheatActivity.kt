@@ -25,6 +25,15 @@ class CheatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cheat)
 
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
+        answerTextView = findViewById(R.id.answer_text_view)
+        showAnswerButton = findViewById(R.id.show_answer_button)
+        showAnswerButton.setOnClickListener {
+            val answerText = when {
+                answerIsTrue -> R.string.true_button
+                else -> R.string.false_button
+            }
+            answerTextView.setText(answerText)
+        }
 
 
 
